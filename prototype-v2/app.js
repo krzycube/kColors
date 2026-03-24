@@ -151,10 +151,10 @@ function renderFrozen() {
   const suggestionShouldShow = state.selectedIds.length >= 1 && !state.selectedIds.includes("core");
   aiSuggestion.hidden = !suggestionShouldShow;
   if (suggestionShouldShow) {
-    aiText.textContent = "亮黄也许也该带上";
+    aiText.textContent = "也把亮黄带上";
   }
 
-  const ready = state.selectedIds.length >= 2;
+  const ready = state.selectedIds.length >= 1;
   xianseButton.classList.toggle("disabled", !ready);
   xianseButton.classList.toggle("is-hidden", !ready);
 
@@ -171,7 +171,7 @@ function renderFrozen() {
 }
 
 function renderXianse() {
-  const ids = state.selectedIds.length >= 2 ? state.selectedIds : ["petal", "leaf", "core"];
+  const ids = state.selectedIds.length >= 1 ? state.selectedIds : ["petal", "leaf", "core"];
   const roles = [
     { x: 50, y: 32, w: "194px", scale: 1, alpha: 1, blur: "0px", className: "main" },
     { x: 34, y: 58, w: "154px", scale: 0.9, alpha: 0.7, blur: "2.2px", className: "support" },
