@@ -1,0 +1,28 @@
+:root {
+  --bg: #0b0d10;
+  --shell: rgba(255, 255, 255, 0.08);
+  --shell-line: rgba(255, 255, 255, 0.14);
+  --glass: rgba(255, 255, 255, 0.2);
+  --glass-strong: rgba(255, 255, 255, 0.32);
+  --glass-edge: rgba(255, 255, 255, 0.54);
+  --paper: rgba(253, 251, 246, 0.94);
+  --paper-shadow: 0 24px 80px rgba(44, 62, 57, 0.12);
+  --paper-tint: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(248, 245, 238, 0.94));
+  --ink: #143d37;
+  --muted: #708b85;
+  --pink: #ea6aa5;
+  --green: #3bc68f;
+  --gold: #f7c95b;
+  --shadow: #6a7391;
+  --warm: rgba(255, 224, 177, 0.8);
+  --mint: rgba(176, 255, 228, 0.72);
+  --blur: blur(24px) saturate(150%);
+  --type-title-home: 30px;
+  --type-title-section: 30px;
+  --type-title-card: 18px;
+  --type-body: 13px;
+  --space-home-top: 60px;
+  --space-home-bottom: 104px;
+  --space-chip-title: 2px;
+  --space-title-entry: 16px;
+}
