@@ -16,7 +16,7 @@
   --warm: rgba(255, 224, 177, 0.8);
   --mint: rgba(176, 255, 228, 0.72);
   --blur: blur(24px) saturate(150%);
-  --type-title-home: 28px;
+  --type-title-home: 30px;
   --type-title-section: 30px;
   --type-title-card: 18px;
   --type-body: 13px;
@@ -274,6 +274,13 @@ button {
   height: 100%;
   overflow: auto;
   padding: 58px 20px 28px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.screen-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .home-scroll {
@@ -354,7 +361,7 @@ button {
 .scene-card {
   position: relative;
   overflow: hidden;
-  min-height: 210px;
+  min-height: 232px;
   border-radius: 36px;
   background: rgba(255, 255, 255, 0.36);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -396,7 +403,7 @@ button {
 
 .entry-footer {
   width: 100%;
-  height: 52px;
+  height: 48px;
   padding: 0 16px;
   display: flex;
   align-items: center;
@@ -405,28 +412,30 @@ button {
   color: white;
   text-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
   background:
-    linear-gradient(180deg, rgba(8, 16, 19, 0.02), rgba(8, 16, 19, 0.18) 46%, rgba(8, 16, 19, 0.34) 100%);
+    linear-gradient(180deg, rgba(8, 16, 19, 0.02), rgba(8, 16, 19, 0.12) 42%, rgba(8, 16, 19, 0.24) 100%);
+  backdrop-filter: blur(10px) saturate(125%);
+  -webkit-backdrop-filter: blur(10px) saturate(125%);
   pointer-events: auto;
 }
 
 .entry-footer span:first-child {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.03em;
 }
 
 .entry-arrow-inline {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   line-height: 1;
-  opacity: 0.82;
+  opacity: 0.74;
 }
 
 .source-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .source-tile {
@@ -505,22 +514,22 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 28px;
-  min-width: 46px;
-  padding: 0 10px;
+  height: 26px;
+  min-width: 42px;
+  padding: 0 9px;
   border-radius: 999px;
-  color: rgba(76, 104, 125, 0.88);
-  font-size: 12px;
+  color: rgba(90, 116, 134, 0.74);
+  font-size: 11px;
   font-weight: 600;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.14)),
-    rgba(173, 205, 232, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.1)),
+    rgba(173, 205, 232, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32);
 }
 
 .resume-head {
-  margin-top: 12px;
+  margin-top: 14px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -539,13 +548,13 @@ button {
 }
 
 .box-head {
-  margin-top: 18px;
+  margin-top: 20px;
   align-items: baseline;
 }
 
 .box-entry {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 12px;
   text-align: left;
   padding: 14px;
   border-radius: 30px;
@@ -555,7 +564,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .ghost-arrow {
@@ -584,8 +593,8 @@ button {
   align-items: center;
   border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 247, 240, 0.94)),
-    rgba(255, 255, 255, 0.94);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 247, 240, 0.97)),
+    rgba(255, 255, 255, 0.98);
   border: 1px solid rgba(255, 255, 255, 0.9);
   box-shadow:
     0 16px 36px rgba(46, 70, 63, 0.12),
@@ -618,8 +627,8 @@ button {
   right: 0;
   top: 18px;
   height: 58px;
-  opacity: 0.12;
-  filter: saturate(0.54);
+  opacity: 0.09;
+  filter: saturate(0.42);
 }
 
 .list-stack {
@@ -954,9 +963,11 @@ button {
 
 .dock-action.solid,
 .bottom-cta.solid {
-  background: linear-gradient(135deg, #6c79ff, #7a5eff);
+  background:
+    linear-gradient(180deg, rgba(54, 142, 112, 0.96), rgba(44, 120, 96, 0.98)),
+    rgba(56, 140, 112, 0.98);
   color: white;
-  box-shadow: 0 18px 30px rgba(108, 120, 255, 0.24);
+  box-shadow: 0 16px 28px rgba(39, 96, 77, 0.2);
 }
 
 .dock-action.primary-soft {
@@ -989,17 +1000,17 @@ button {
 
 .relation-stage {
   margin-top: 20px;
-  padding: 22px 20px 24px;
+  padding: 20px 18px 22px;
   border-radius: 34px;
 }
 
 .source-memory {
   margin-top: 16px;
-  padding: 14px;
-  border-radius: 28px;
+  padding: 12px;
+  border-radius: 24px;
   display: grid;
   grid-template-columns: 84px 1fr;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -1013,7 +1024,7 @@ button {
 
 .memory-copy h3 {
   margin: 4px 0 0;
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: -0.03em;
 }
 
@@ -1053,15 +1064,16 @@ button {
 .soft-ribbon {
   display: flex;
   gap: 0;
-  padding: 8px;
+  padding: 7px;
   border-radius: 999px;
-  background: rgba(205, 244, 229, 0.72);
+  background: rgba(205, 244, 229, 0.5);
 }
 
 .relation-note {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   text-align: center;
   color: var(--muted);
+  font-size: 12px;
 }
 
 .blend {
@@ -1073,18 +1085,18 @@ button {
 .settle-top {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
 }
 
 .glass-check {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   display: grid;
   place-items: center;
   border-radius: 999px;
   color: #199166;
-  font-size: 28px;
+  font-size: 24px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.44)),
     rgba(255, 255, 255, 0.56);
@@ -1126,6 +1138,10 @@ button {
   margin-top: 12px;
 }
 
+.sheet-note {
+  font-size: 12px;
+}
+
 .dual-actions {
   display: grid;
   gap: 12px;
@@ -1141,7 +1157,7 @@ button {
 .list-stack {
   padding-top: 18px;
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
 .list-sheet.current {
@@ -1153,8 +1169,8 @@ button {
 .compact-sheet {
   text-align: left;
   display: grid;
-  grid-template-columns: 108px 1fr;
-  gap: 14px;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
   align-items: center;
   padding: 14px;
 }
@@ -1173,8 +1189,9 @@ button {
 }
 
 .sheet-photo.thin {
-  height: 92px;
+  height: 84px;
   margin-top: 0;
+  border-radius: 20px;
 }
 
 .sheet-next-head h4 {
@@ -1190,21 +1207,24 @@ button {
 }
 
 .detail-swatch {
-  height: 94px;
-  border-radius: 24px;
+  min-height: 74px;
+  padding: 14px 10px;
+  border-radius: 22px;
   color: white;
   font-weight: 700;
+  font-size: 14px;
+  text-align: center;
 }
 
 .detail-caption {
-  margin-top: 18px;
-  padding: 16px 18px;
+  margin-top: 14px;
+  padding: 14px 16px;
   display: grid;
   grid-template-columns: auto auto auto 1fr;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
   border-radius: 24px;
-  background: rgba(228, 242, 236, 0.78);
+  background: rgba(228, 242, 236, 0.58);
 }
 
 .caption-dot {
@@ -1217,7 +1237,8 @@ button {
 .detail-caption p {
   margin: 0;
   color: var(--ink);
-  line-height: 1.45;
+  line-height: 1.4;
+  font-size: 13px;
 }
 
 .settle-header {
