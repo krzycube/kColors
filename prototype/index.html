@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>彩盒 · Liquid Glass Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <div class="ambient ambient-c"></div>
+
+    <main class="studio">
+      <aside class="rail shell-glass">
+        <div class="rail-header">
+          <p class="rail-kicker">彩盒</p>
+          <h1>Liquid Glass Prototype</h1>
+          <p class="rail-copy">
+            iPhone-first. Home, See, Try, 收进彩盒, 我的彩盒。
+          </p>
+        </div>
+
+        <nav class="screen-nav">
+          <button class="screen-link active" data-target="home">Home</button>
+          <button class="screen-link" data-target="see-live">See / Live</button>
+          <button class="screen-link" data-target="see-frozen">See / Frozen</button>
+          <button class="screen-link" data-target="see-picked">See / Picked</button>
+          <button class="screen-link" data-target="try">Try</button>
+          <button class="screen-link" data-target="box-new">彩盒 / 新收页</button>
+          <button class="screen-link" data-target="box-list">彩盒 / 页列表</button>
+          <button class="screen-link" data-target="box-detail">彩盒 / 单页</button>
+        </nav>
+      </aside>
+
+      <section class="phone-stage">
+        <div class="phone-shell">
+          <div class="phone-hardware"></div>
+          <div class="phone-screen">
+            <section class="screen active" data-screen="home">
+              <div class="screen-bg screen-bg-home"></div>
+              <div class="statusbar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span class="battery"></span>
+                </div>
+              </div>
+
+              <div class="screen-scroll home-scroll">
+                <div class="glass-chip weather-chip">
+                  <span>春分</span>
+                  <span>·</span>
+                  <span>适合外出观察</span>
+                </div>
+
+                <header class="home-hero">
+                  <div class="home-copy">
+                    <h2>今天的颜色，在外面等你</h2>
+                  </div>
+
+                  <article class="hero-scene scene-card">
+                    <div class="scene-photo photo-mist"></div>
+                    <div class="scene-overlay">
+                      <button class="entry-footer" data-go="see-live">
+                        <span>去看看今天的颜色</span>
+                        <span class="entry-arrow-inline">→</span>
+                      </button>
+                    </div>
+                  </article>
+                </header>
+
+                <div class="resume-head">
+                  <h3>上次停在这里</h3>
+                  <span>还在等你回来</span>
+                </div>
+
+                <button class="resume-strip shell-glass" data-go="see-picked">
+                  <div class="resume-thumb photo-maple"></div>
+                  <div class="resume-text">
+                    <h3>秋天的枫叶</h3>
+                    <p>2 种颜色，还可以继续</p>
+                  </div>
+                  <span class="count-pill">2 / 5</span>
+                </button>
+
+                <div class="source-row">
+                  <button class="source-tile shell-glass" data-go="see-frozen">
+                    <span class="tile-icon amber">✦</span>
+                    <div>
+                      <h3>精选样本</h3>
+                      <p>直接开始</p>
+                    </div>
+                  </button>
+                  <button class="source-tile shell-glass" data-go="see-frozen">
+                    <span class="tile-icon mint">▣</span>
+                    <div>
+                      <h3>相册</h3>
+                      <p>照片或视频</p>
+                    </div>
+                  </button>
+                </div>
+
+                <div class="resume-head box-head">
+                  <h3>我的彩盒</h3>
+                </div>
+
+                <button class="box-entry shell-glass" data-go="box-list">
+                  <div class="preview-head">
+                    <div>
+                      <h3>翻一翻收起来的页</h3>
+                    </div>
+                    <span class="ghost-arrow">→</span>
+                  </div>
+                  <div class="box-entry-body">
+                    <article class="mini-page main">
+                      <div class="mini-page-photo photo-flower"></div>
+                      <div class="mini-page-swatches">
+                        <span style="--swatch:#e4549d"></span>
+                        <span style="--swatch:#2fc08a"></span>
+                        <span style="--swatch:#5f8cff"></span>
+                      </div>
+                    </article>
+                    <article class="mini-page under">
+                      <div class="mini-page-photo photo-sunset"></div>
+                      <div class="mini-page-swatches">
+                        <span style="--swatch:#ffb694"></span>
+                        <span style="--swatch:#d9efcf"></span>
+                        <span style="--swatch:#b9c6ff"></span>
+                      </div>
+                    </article>
+                  </div>
+                </button>
+              </div>
+
+              <nav class="tab-dock shell-glass dock-fixed">
+                <button class="tab-item active">首页</button>
+                <button class="tab-item">发现</button>
+                <button class="tab-item" data-go="box-list">彩盒</button>
+              </nav>
+            </section>
+
+            <section class="screen" data-screen="see-live">
+              <div class="photo-screen photo-flower-full">
+                <div class="statusbar inverted">
+                  <span>9:41</span>
+                  <div class="status-icons">
+                    <span>5G</span>
+                    <span class="battery"></span>
+                  </div>
+                </div>
+
+                <div class="top-floating">
+                  <button class="nav-orb" data-go="home">‹</button>
+                  <div class="live-title">看一眼正在发生的颜色</div>
+                  <div class="nav-gap"></div>
+                </div>
+
+                <div class="capture-dock">
+                  <button class="capture-pill" data-go="see-frozen">
+                    <span class="capture-core"></span>
+                  </button>
+                  <p>停住这一刻</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="see-frozen">
+              <div class="photo-screen photo-flower-full frozen">
+                <div class="statusbar inverted">
+                  <span>9:41</span>
+                  <div class="status-icons">
+                    <span>5G</span>
+                    <span class="battery"></span>
+                  </div>
+                </div>
+
+                <div class="top-floating">
+                  <button class="nav-orb" data-go="home">‹</button>
+                  <div class="live-title">点一点你看到的颜色</div>
+                  <button class="nav-orb ghost">▣</button>
+                </div>
+
+                <div class="focus-dot active pink" style="top: 47%; left: 55%"></div>
+
+                <div class="glass-dock observe-dock">
+                  <div class="slot-row compact">
+                    <button class="slot active empty"></button>
+                    <button class="slot empty"></button>
+                    <button class="slot empty"></button>
+                    <button class="slot empty"></button>
+                    <button class="slot empty"></button>
+                  </div>
+                  <button class="dock-action disabled">放在一起看看</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="see-picked">
+              <div class="photo-screen photo-flower-full frozen">
+                <div class="statusbar inverted">
+                  <span>9:41</span>
+                  <div class="status-icons">
+                    <span>5G</span>
+                    <span class="battery"></span>
+                  </div>
+                </div>
+
+                <div class="top-floating">
+                  <button class="nav-orb" data-go="home">‹</button>
+                  <div class="live-title">原来这里不止一种颜色</div>
+                  <button class="nav-orb ghost">▣</button>
+                </div>
+
+                <div class="focus-dot pink" style="top: 47%; left: 55%"></div>
+                <div class="focus-dot green" style="top: 60%; left: 48%"></div>
+                <div class="focus-dot blue" style="top: 64%; left: 63%"></div>
+
+                <div class="glass-dock observe-dock">
+                  <div class="slot-row compact">
+                    <button class="slot filled pink"></button>
+                    <button class="slot filled green"></button>
+                    <button class="slot filled blue"></button>
+                    <button class="slot empty"></button>
+                    <button class="slot empty"></button>
+                  </div>
+                  <button class="dock-action primary-soft" data-go="try">放在一起看看</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="try">
+              <div class="screen-bg screen-bg-box"></div>
+              <div class="statusbar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span class="battery"></span>
+                </div>
+              </div>
+
+              <div class="screen-scroll try-scroll">
+                <div class="top-floating light-flow">
+                  <button class="nav-orb light" data-go="see-picked">‹</button>
+                  <div class="glass-chip source-pill">
+                    <span class="chip-dot"></span>
+                    花园里的花
+                  </div>
+                  <div class="nav-gap"></div>
+                </div>
+
+                <header class="section-header compact">
+                  <h2>看它们待在一起</h2>
+                </header>
+
+                <article class="source-memory shell-glass">
+                  <div class="memory-thumb photo-flower"></div>
+                  <div class="memory-copy">
+                    <p class="micro">刚刚带回来的这一页</p>
+                    <h3>花园里的花</h3>
+                  </div>
+                </article>
+
+                <section class="relation-stage shell-glass">
+                  <div class="mix-swarm">
+                    <span class="mix-orb pink"></span>
+                    <span class="mix-orb green"></span>
+                    <span class="mix-orb blue"></span>
+                  </div>
+                  <div class="sheet-swatches centered">
+                    <span style="--swatch:#e4549d"></span>
+                    <span style="--swatch:#2fc08a"></span>
+                    <span style="--swatch:#5f8cff"></span>
+                  </div>
+                  <div class="liquid-ribbon">
+                    <span class="blend pink"></span>
+                    <span class="blend green"></span>
+                    <span class="blend blue"></span>
+                  </div>
+                  <p class="relation-note">它们靠近以后，开始像一页完整的花。</p>
+                </section>
+
+                <button class="bottom-cta solid" data-go="box-new">收进彩盒</button>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="box-new">
+              <div class="screen-bg screen-bg-box-list"></div>
+              <div class="statusbar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span class="battery"></span>
+                </div>
+              </div>
+
+              <div class="screen-scroll box-scroll">
+                <div class="settle-top">
+                  <div class="glass-check">✓</div>
+                  <div class="glass-chip new-chip">刚刚收进来</div>
+                </div>
+
+                <header class="section-header compact settle-header">
+                  <h2>这一页现在在彩盒里了</h2>
+                </header>
+
+                <article class="page-sheet open-sheet">
+                  <div class="sheet-photo photo-flower"></div>
+                  <div class="sheet-body">
+                    <h2>花园里的花</h2>
+                    <p class="sheet-meta">3月23日 · 下午</p>
+                    <div class="sheet-swatches large">
+                      <span style="--swatch:#e4549d"></span>
+                      <span style="--swatch:#2fc08a"></span>
+                      <span style="--swatch:#5f8cff"></span>
+                    </div>
+                    <div class="soft-ribbon">
+                      <span class="blend pink"></span>
+                      <span class="blend green"></span>
+                      <span class="blend blue"></span>
+                    </div>
+                    <p class="sheet-note">这一页先在这里安静待着。</p>
+                  </div>
+                </article>
+
+                <div class="dual-actions">
+                  <button class="bottom-cta pale" data-go="see-live">再去看看</button>
+                  <button class="bottom-cta solid" data-go="box-list">查看彩盒</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="box-list">
+              <div class="screen-bg screen-bg-box-list"></div>
+              <div class="statusbar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span class="battery"></span>
+                </div>
+              </div>
+
+              <div class="screen-scroll box-scroll">
+                <header class="section-header">
+                  <p class="micro">我的彩盒</p>
+                  <h2>翻一翻收起来的页</h2>
+                </header>
+
+                <div class="list-stack">
+                  <button class="page-sheet list-sheet current" data-go="box-detail">
+                    <div class="sheet-photo photo-flower"></div>
+                    <div class="sheet-body">
+                      <h3>花园里的花</h3>
+                      <div class="sheet-swatches">
+                        <span style="--swatch:#e4549d"></span>
+                        <span style="--swatch:#2fc08a"></span>
+                        <span style="--swatch:#5f8cff"></span>
+                      </div>
+                      <p class="sheet-meta">3月23日 · 下午</p>
+                    </div>
+                  </button>
+
+                  <button class="page-sheet list-sheet compact-sheet" data-go="box-detail">
+                    <div class="sheet-next-head">
+                      <h4>海边的日落</h4>
+                      <div class="mini-swatches">
+                        <span style="--swatch:#ff8a4d"></span>
+                        <span style="--swatch:#f1bf67"></span>
+                        <span style="--swatch:#8d78ff"></span>
+                      </div>
+                    </div>
+                    <div class="sheet-photo thin photo-sunset"></div>
+                  </button>
+
+                  <button class="page-sheet list-sheet compact-sheet" data-go="box-detail">
+                    <div class="sheet-next-head">
+                      <h4>枫叶的一页</h4>
+                      <div class="mini-swatches">
+                        <span style="--swatch:#d65734"></span>
+                        <span style="--swatch:#f09a3e"></span>
+                        <span style="--swatch:#6c8a44"></span>
+                      </div>
+                    </div>
+                    <div class="sheet-photo thin photo-maple"></div>
+                  </button>
+                </div>
+
+                <nav class="tab-dock shell-glass dock-fixed">
+                  <button class="tab-item" data-go="home">首页</button>
+                  <button class="tab-item">发现</button>
+                  <button class="tab-item active">彩盒</button>
+                </nav>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="box-detail">
+              <div class="screen-bg screen-bg-box-list"></div>
+              <div class="statusbar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span class="battery"></span>
+                </div>
+              </div>
+
+              <div class="screen-scroll box-scroll">
+                <div class="top-floating light-flow">
+                  <button class="nav-orb light" data-go="box-list">‹</button>
+                  <div class="glass-chip source-pill">这一页</div>
+                  <button class="nav-orb light">⋯</button>
+                </div>
+
+                <article class="page-sheet detail-sheet">
+                  <div class="sheet-photo photo-flower"></div>
+                  <div class="sheet-body">
+                    <p class="micro">3月23日 · 下午</p>
+                    <h2>花园里的花</h2>
+                    <div class="detail-swatches">
+                      <button class="detail-swatch pink">桃花粉</button>
+                      <button class="detail-swatch green">青草绿</button>
+                      <button class="detail-swatch blue">天空蓝</button>
+                    </div>
+                    <div class="soft-ribbon">
+                      <span class="blend pink"></span>
+                      <span class="blend green"></span>
+                      <span class="blend blue"></span>
+                    </div>
+                    <div class="detail-caption">
+                      <span class="caption-dot pink"></span>
+                      <span class="caption-dot green"></span>
+                      <span class="caption-dot blue"></span>
+                      <p>它们最后待成了花园的样子。</p>
+                    </div>
+                  </div>
+                </article>
+
+                <button class="bottom-cta pale" data-go="see-live">再去收集新的颜色</button>
+
+                <nav class="tab-dock shell-glass dock-fixed">
+                  <button class="tab-item" data-go="home">首页</button>
+                  <button class="tab-item">发现</button>
+                  <button class="tab-item active">彩盒</button>
+                </nav>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
