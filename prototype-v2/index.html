@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./styles/screens/live.css" />
     <link rel="stylesheet" href="./styles/screens/frozen.css" />
     <link rel="stylesheet" href="./styles/screens/xianse.css" />
+    <link rel="stylesheet" href="./styles/screens/mix.css" />
+    <link rel="stylesheet" href="./styles/screens/story.css" />
     <link rel="stylesheet" href="./styles/screens/box.css" />
   </head>
   <body>
@@ -22,9 +24,9 @@
       <aside class="rail shell-glass">
         <div class="rail-header">
           <p class="rail-kicker">彩盒 v2</p>
-          <h1>Frozen / 显色 Prototype</h1>
+          <h1>混色实验 / 故事册 Prototype</h1>
           <p class="rail-copy">
-            保留 v1 基线，新开 v2 主战场。当前先覆盖 Home、Live、Frozen、显色与彩盒列表。
+            核心体验重定义：从自然发现颜色 → 混色实验 → 收成故事
           </p>
         </div>
 
@@ -32,8 +34,9 @@
           <button class="screen-link active" data-target="home">Home</button>
           <button class="screen-link" data-target="see-live">See / Live</button>
           <button class="screen-link" data-target="see-frozen">See / Frozen</button>
-          <button class="screen-link" data-target="xianse">显色</button>
-          <button class="screen-link" data-target="box-list">彩盒 / 页列表</button>
+          <button class="screen-link" data-target="xianse">混色实验</button>
+          <button class="screen-link" data-target="story-new">新收的故事</button>
+          <button class="screen-link" data-target="box-list">彩盒 / 故事册</button>
         </nav>
       </aside>
 
@@ -60,14 +63,14 @@
 
                 <header class="home-hero">
                   <div class="home-copy">
-                    <h2>今天的颜色，在外面等你</h2>
+                    <h2>今天想探索什么颜色？</h2>
                   </div>
 
                   <article class="hero-scene scene-card">
                     <div class="scene-photo photo-mist"></div>
                     <div class="scene-overlay">
                       <button class="entry-footer" data-go="see-live">
-                        <span>去看看今天的颜色</span>
+                        <span>去外面发现颜色</span>
                         <span class="entry-arrow-inline">→</span>
                       </button>
                     </div>
@@ -83,9 +86,9 @@
                   <div class="resume-thumb photo-flower"></div>
                   <div class="resume-text">
                     <h3>花园里的花</h3>
-                    <p>3 个片段，已经开始站出来了</p>
+                    <p>3 个颜色等着你混一混</p>
                   </div>
-                  <span class="count-pill">显色中</span>
+                  <span class="count-pill">实验中</span>
                 </button>
 
                 <div class="source-row">
@@ -106,13 +109,13 @@
                 </div>
 
                 <div class="resume-head box-head">
-                  <h3>我的彩盒</h3>
+                  <h3>我的故事册</h3>
                 </div>
 
                 <button class="box-entry shell-glass" data-go="box-list">
                   <div class="preview-head">
                     <div>
-                      <h3>翻一翻收起来的页</h3>
+                      <h3>翻一翻我的发现</h3>
                     </div>
                     <span class="ghost-arrow">→</span>
                   </div>
@@ -140,7 +143,7 @@
               <nav class="tab-dock shell-glass dock-fixed">
                 <button class="tab-item active">首页</button>
                 <button class="tab-item">发现</button>
-                <button class="tab-item" data-go="box-list">彩盒</button>
+                <button class="tab-item" data-go="box-list">故事册</button>
               </nav>
             </section>
 
@@ -181,7 +184,7 @@
 
                 <div class="top-floating">
                   <button class="nav-orb" data-go="home">‹</button>
-                  <div class="live-title">先指出你注意到哪里</div>
+                  <div class="live-title">这里面有好几种颜色呢</div>
                   <button class="nav-orb ghost">▣</button>
                 </div>
 
@@ -208,14 +211,14 @@
                   <div class="fragment-strip" data-fragment-strip></div>
 
                   <button class="frozen-go-pill bottom-cta solid disabled is-hidden" data-go="xianse" data-enter-xianse>
-                    让它们往前站一站
+                    混一混看看
                   </button>
                 </div>
               </div>
             </section>
 
             <section class="screen" data-screen="xianse">
-              <div class="screen-bg screen-bg-xianse"></div>
+              <div class="screen-bg screen-bg-mix"></div>
               <div class="statusbar">
                 <span>9:41</span>
                 <div class="status-icons">
@@ -224,36 +227,138 @@
                 </div>
               </div>
 
-              <div class="screen-scroll xianse-scroll">
+              <div class="screen-scroll mix-scroll">
                 <div class="top-floating light-flow">
                   <button class="nav-orb light" data-go="see-frozen">‹</button>
-                  <div class="source-line">
-                    <span class="source-kicker">来自</span>
-                    <span class="source-name">花园里的花</span>
+                  <div class="source-chip shell-glass">
+                    <div class="source-thumb photo-flower"></div>
+                    <span>花园里的花</span>
                   </div>
-                  <button class="ghost-pill top-ghost" data-go="see-frozen">补一处</button>
+                  <button class="collect-btn ghost-pill" data-collect-story>收成</button>
                 </div>
 
-                <header class="section-header xianse-header">
-                  <p class="micro">显色</p>
-                  <h2>让颜色站出来</h2>
+                <header class="section-header mix-header">
+                  <p class="micro">混色实验</p>
+                  <h2>从下面选两个颜色<br/>看看混在一起会怎样</h2>
                 </header>
 
-                <section class="xianse-stage shell-glass">
-                  <div class="source-echo photo-flower" aria-hidden="true"></div>
-                  <div class="source-wash" aria-hidden="true"></div>
-                  <div class="standing-field" data-standing-field></div>
-                </section>
-
-                <section class="page-foreshadow shell-glass">
-                  <div class="foreshadow-copy">
-                    <p class="micro">这一页开始成形</p>
-                    <h3>它们已经不只是一组颜色了</h3>
+                <section class="mix-lab shell-glass">
+                  <div class="lab-bg photo-flower" aria-hidden="true"></div>
+                  <div class="lab-wash" aria-hidden="true"></div>
+                  
+                  <div class="mix-stage" data-mix-stage>
+                    <div class="mix-slot slot-left" data-slot="left">
+                      <div class="slot-placeholder">选一个</div>
+                    </div>
+                    
+                    <div class="mix-center">
+                      <div class="mix-operator">+</div>
+                      <div class="mix-result-area" data-result-area>
+                        <div class="result-placeholder">= ?</div>
+                      </div>
+                    </div>
+                    
+                    <div class="mix-slot slot-right" data-slot="right">
+                      <div class="slot-placeholder">再选一个</div>
+                    </div>
                   </div>
-                  <div class="foreshadow-ribbon" data-foreshadow-ribbon></div>
                 </section>
 
-                <button class="bottom-cta solid">收进彩盒</button>
+                <section class="color-palette shell-glass">
+                  <div class="palette-section">
+                    <p class="palette-label">点击颜色开始混色 ↓</p>
+                    <div class="palette-row" data-discovered-colors>
+                    </div>
+                  </div>
+                  <div class="palette-section created-section" data-created-section>
+                    <p class="palette-label">混出的新颜色</p>
+                    <div class="palette-row" data-created-colors>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="mix-history shell-glass" data-mix-history-section>
+                  <p class="palette-label">实验记录</p>
+                  <div class="history-list" data-mix-history>
+                  </div>
+                </section>
+
+                <button class="bottom-cta solid" data-go-story data-collect-story>收成这次发现</button>
+              </div>
+            </section>
+
+            <section class="screen" data-screen="story-new">
+              <div class="screen-bg screen-bg-story"></div>
+              <div class="statusbar">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>5G</span>
+                  <span class="battery"></span>
+                </div>
+              </div>
+
+              <div class="screen-scroll story-scroll">
+                <div class="top-floating light-flow">
+                  <button class="nav-orb light" data-go="xianse">‹</button>
+                  <div class="story-status">这一页收好了</div>
+                  <div class="nav-gap"></div>
+                </div>
+
+                <article class="story-page">
+                  <section class="story-cover">
+                    <div class="cover-image photo-flower"></div>
+                    <div class="cover-meta">
+                      <span class="cover-time">今天下午</span>
+                      <span class="cover-scene">花园里的花</span>
+                    </div>
+                  </section>
+
+                  <section class="story-chapter">
+                    <p class="chapter-label">我发现了这些颜色</p>
+                    <div class="chapter-colors" data-story-discovered>
+                      <span class="story-swatch" style="--swatch: #ea6aa5"></span>
+                      <span class="story-swatch" style="--swatch: #3bc68f"></span>
+                      <span class="story-swatch" style="--swatch: #f7c95b"></span>
+                    </div>
+                  </section>
+
+                  <section class="story-chapter">
+                    <p class="chapter-label">我试着混了混</p>
+                    <div class="chapter-experiments" data-story-experiments>
+                      <div class="experiment-row">
+                        <span class="exp-color" style="--swatch: #ea6aa5"></span>
+                        <span class="exp-op">+</span>
+                        <span class="exp-color" style="--swatch: #3bc68f"></span>
+                        <span class="exp-eq">=</span>
+                        <span class="exp-result" style="--swatch: #92999a"></span>
+                      </div>
+                      <div class="experiment-row">
+                        <span class="exp-color" style="--swatch: #ea6aa5"></span>
+                        <span class="exp-op">+</span>
+                        <span class="exp-color" style="--swatch: #f7c95b"></span>
+                        <span class="exp-eq">=</span>
+                        <span class="exp-result" style="--swatch: #f1a180"></span>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="story-chapter">
+                    <p class="chapter-label">我得到了</p>
+                    <div class="chapter-results" data-story-results>
+                      <span class="result-swatch" style="--swatch: #92999a"></span>
+                      <span class="result-swatch" style="--swatch: #f1a180"></span>
+                    </div>
+                  </section>
+                </article>
+
+                <div class="story-actions">
+                  <button class="action-btn primary" data-go="box-list">
+                    看看我的彩盒
+                  </button>
+                  <button class="action-btn secondary" data-go="see-live">
+                    再去看看
+                  </button>
+                </div>
               </div>
             </section>
 
@@ -269,20 +374,24 @@
 
               <div class="screen-scroll box-scroll">
                 <header class="section-header">
-                  <p class="micro">我的彩盒</p>
-                  <h2>翻一翻收起来的页</h2>
+                  <p class="micro">我的故事册</p>
+                  <h2>每一页都是一次发现</h2>
                 </header>
 
                 <div class="list-stack">
-                  <button class="page-sheet list-sheet current">
+                  <button class="page-sheet list-sheet current" data-go="story-new">
                     <div class="sheet-photo photo-flower"></div>
                     <div class="sheet-body list-body">
-                      <p class="sheet-meta">3月24日 · 下午</p>
+                      <p class="sheet-meta">今天 · 下午</p>
                       <h3>花园里的花</h3>
+                      <p class="sheet-summary">发现了 3 种颜色，混出了 2 种新颜色</p>
                       <div class="sheet-swatches">
                         <span style="--swatch:#ea6aa5"></span>
                         <span style="--swatch:#3bc68f"></span>
                         <span style="--swatch:#f7c95b"></span>
+                        <span class="swatch-divider"></span>
+                        <span style="--swatch:#92999a" class="mixed"></span>
+                        <span style="--swatch:#f1a180" class="mixed"></span>
                       </div>
                     </div>
                   </button>
@@ -292,6 +401,7 @@
                     <div class="compact-body">
                       <p class="sheet-meta">3月18日 · 傍晚</p>
                       <h4>海边的日落</h4>
+                      <p class="sheet-summary-mini">3 种颜色 · 1 次混色</p>
                       <div class="mini-swatches">
                         <span style="--swatch:#f59b63"></span>
                         <span style="--swatch:#e8d59b"></span>
@@ -304,7 +414,7 @@
                 <nav class="tab-dock shell-glass dock-fixed">
                   <button class="tab-item" data-go="home">首页</button>
                   <button class="tab-item">发现</button>
-                  <button class="tab-item active">彩盒</button>
+                  <button class="tab-item active">故事册</button>
                 </nav>
               </div>
             </section>

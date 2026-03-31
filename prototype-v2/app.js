@@ -65,6 +65,14 @@ const state = {
   activeId: null,
 };
 
+const mixState = {
+  discoveredColors: [],
+  createdColors: [],
+  mixHistory: [],
+  selectedForMix: [],
+  currentResult: null,
+};
+
 const fragmentLayer = document.querySelector("[data-fragment-layer]");
 const fragmentStrip = document.querySelector("[data-fragment-strip]");
 const fragmentCount = document.querySelector("[data-fragment-count]");
@@ -84,7 +92,7 @@ function activateScreen(target) {
   });
 
   if (target === "xianse") {
-    renderXianse();
+    initMixPage();
   }
 }
 
@@ -309,4 +317,249 @@ fragmentStrip.addEventListener("pointercancel", stopStripDrag);
 fragmentStrip.addEventListener("pointerleave", stopStripDrag);
 
 renderFrozen();
-renderXianse();
+
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + [r, g, b].map(x => {
+    const hex = Math.round(x).toString(16);
+    return hex.length === 1 ? '0' + hex : hex;
+  }).join('');
+}
+
+function mixColors(color1, color2) {
+  const rgb1 = hexToRgb(color1);
+  const rgb2 = hexToRgb(color2);
+  if (!rgb1 || !rgb2) return color1;
+  
+  const mixed = {
+    r: (rgb1.r + rgb2.r) / 2,
+    g: (rgb1.g + rgb2.g) / 2,
+    b: (rgb1.b + rgb2.b) / 2
+  };
+  
+  return rgbToHex(mixed.r, mixed.g, mixed.b);
+}
+
+function initMixPage() {
+  mixState.discoveredColors = state.selectedIds.length > 0 
+    ? state.selectedIds.map(id => fragmentDefs[id].swatch)
+    : [fragmentDefs.petal.swatch, fragmentDefs.leaf.swatch, fragmentDefs.core.swatch];
+  
+  mixState.createdColors = [];
+  mixState.mixHistory = [];
+  mixState.selectedForMix = [];
+  mixState.currentResult = null;
+  
+  renderMixPage();
+}
+
+function renderMixPage() {
+  const discoveredColorsContainer = document.querySelector("[data-discovered-colors]");
+  const createdColorsContainer = document.querySelector("[data-created-colors]");
+  const createdSection = document.querySelector("[data-created-section]");
+  
+  if (!discoveredColorsContainer) return;
+  
+  discoveredColorsContainer.innerHTML = "";
+  mixState.discoveredColors.forEach((color, index) => {
+    const btn = document.createElement("button");
+    btn.className = "palette-color";
+    btn.style.background = color;
+    btn.dataset.colorType = "discovered";
+    btn.dataset.colorIndex = index;
+    btn.dataset.color = color;
+    if (mixState.selectedForMix.includes(color)) {
+      btn.classList.add("selected");
+    }
+    discoveredColorsContainer.appendChild(btn);
+  });
+
+  if (createdColorsContainer) {
+    createdColorsContainer.innerHTML = "";
+    if (mixState.createdColors.length > 0) {
+      createdSection.classList.add("has-colors");
+      mixState.createdColors.forEach((color, index) => {
+        const btn = document.createElement("button");
+        btn.className = "palette-color new-color";
+        btn.style.background = color;
+        btn.dataset.colorType = "created";
+        btn.dataset.colorIndex = index;
+        btn.dataset.color = color;
+        if (mixState.selectedForMix.includes(color)) {
+          btn.classList.add("selected");
+        }
+        createdColorsContainer.appendChild(btn);
+      });
+    } else {
+      createdSection.classList.remove("has-colors");
+    }
+  }
+
+  updateSlots();
+  updateHistory();
+  updateCollectButton();
+}
+
+function updateSlots() {
+  const slotLeft = document.querySelector('[data-slot="left"]');
+  const slotRight = document.querySelector('[data-slot="right"]');
+  const resultArea = document.querySelector("[data-result-area]");
+  
+  if (!slotLeft || !slotRight || !resultArea) return;
+
+  slotLeft.innerHTML = mixState.selectedForMix[0] 
+    ? `<div class="slot-color" style="background: ${mixState.selectedForMix[0]}"></div>`
+    : '<div class="slot-placeholder">…</div>';
+  slotLeft.classList.toggle("filled", !!mixState.selectedForMix[0]);
+
+  slotRight.innerHTML = mixState.selectedForMix[1]
+    ? `<div class="slot-color" style="background: ${mixState.selectedForMix[1]}"></div>`
+    : '<div class="slot-placeholder">…</div>';
+  slotRight.classList.toggle("filled", !!mixState.selectedForMix[1]);
+
+  if (mixState.currentResult) {
+    resultArea.innerHTML = `<div class="result-color" style="background: ${mixState.currentResult}"></div>`;
+    resultArea.classList.add("has-result");
+  } else {
+    resultArea.innerHTML = '<div class="result-placeholder">= ?</div>';
+    resultArea.classList.remove("has-result");
+  }
+}
+
+function updateHistory() {
+  const mixHistorySection = document.querySelector("[data-mix-history-section]");
+  const mixHistoryContainer = document.querySelector("[data-mix-history]");
+  
+  if (!mixHistorySection || !mixHistoryContainer) return;
+
+  if (mixState.mixHistory.length > 0) {
+    mixHistorySection.classList.add("has-history");
+    mixHistoryContainer.innerHTML = mixState.mixHistory.map(item => `
+      <div class="history-item">
+        <div class="history-color" style="background: ${item.color1}"></div>
+        <span class="history-operator">+</span>
+        <div class="history-color" style="background: ${item.color2}"></div>
+        <span class="history-equals">=</span>
+        <div class="history-result" style="background: ${item.result}"></div>
+      </div>
+    `).join("");
+  } else {
+    mixHistorySection.classList.remove("has-history");
+  }
+}
+
+function updateCollectButton() {
+  const collectButtons = document.querySelectorAll("[data-collect-story]");
+  const goStoryButton = document.querySelector("[data-go-story]");
+  
+  const hasResult = mixState.createdColors.length > 0;
+  collectButtons.forEach(btn => {
+    btn.classList.toggle("active", hasResult);
+  });
+  if (goStoryButton) {
+    goStoryButton.classList.toggle("active", hasResult);
+  }
+}
+
+function selectColorForMix(color) {
+  if (mixState.selectedForMix.includes(color)) {
+    mixState.selectedForMix = mixState.selectedForMix.filter(c => c !== color);
+    mixState.currentResult = null;
+    renderMixPage();
+    return;
+  }
+
+  if (mixState.selectedForMix.length >= 2) {
+    mixState.selectedForMix = [color];
+    mixState.currentResult = null;
+  } else {
+    mixState.selectedForMix.push(color);
+  }
+
+  renderMixPage();
+
+  if (mixState.selectedForMix.length === 2) {
+    setTimeout(() => {
+      performMix();
+    }, 400);
+  }
+}
+
+function performMix() {
+  const [color1, color2] = mixState.selectedForMix;
+  const result = mixColors(color1, color2);
+  
+  mixState.currentResult = result;
+  
+  if (!mixState.createdColors.includes(result)) {
+    mixState.createdColors.push(result);
+  }
+  
+  mixState.mixHistory.unshift({ color1, color2, result });
+  
+  if (mixState.mixHistory.length > 5) {
+    mixState.mixHistory = mixState.mixHistory.slice(0, 5);
+  }
+  
+  renderMixPage();
+  
+  setTimeout(() => {
+    mixState.selectedForMix = [];
+    mixState.currentResult = null;
+    renderMixPage();
+  }, 1500);
+}
+
+document.addEventListener("click", (event) => {
+  const colorBtn = event.target.closest(".palette-color");
+  if (colorBtn && colorBtn.dataset.color) {
+    selectColorForMix(colorBtn.dataset.color);
+  }
+});
+
+document.querySelectorAll("[data-collect-story]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (mixState.createdColors.length > 0) {
+      renderStoryPage();
+      activateScreen("story-new");
+    }
+  });
+});
+
+function renderStoryPage() {
+  const storyDiscovered = document.querySelector("[data-story-discovered]");
+  const storyExperiments = document.querySelector("[data-story-experiments]");
+  const storyResults = document.querySelector("[data-story-results]");
+
+  if (storyDiscovered) {
+    storyDiscovered.innerHTML = mixState.discoveredColors.map(color => 
+      `<span class="story-swatch" style="--swatch: ${color}"></span>`
+    ).join("");
+  }
+
+  if (storyExperiments && mixState.mixHistory.length > 0) {
+    storyExperiments.innerHTML = mixState.mixHistory.slice(0, 3).map(item => `
+      <div class="experiment-row">
+        <span class="exp-color" style="--swatch: ${item.color1}"></span>
+        <span class="exp-op">+</span>
+        <span class="exp-color" style="--swatch: ${item.color2}"></span>
+        <span class="exp-eq">=</span>
+        <span class="exp-result" style="--swatch: ${item.result}"></span>
+      </div>
+    `).join("");
+  }
+
+  if (storyResults) {
+    storyResults.innerHTML = mixState.createdColors.map(color => 
+      `<span class="result-swatch" style="--swatch: ${color}"></span>`
+    ).join("");
+  }
+}

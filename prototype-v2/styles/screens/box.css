@@ -86,3 +86,28 @@
   font-size: 18px;
   letter-spacing: -0.03em;
 }
+
+.sheet-summary {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sheet-summary-mini {
+  margin: 2px 0 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.swatch-divider {
+  width: 1px !important;
+  height: 20px !important;
+  background: rgba(0, 0, 0, 0.1) !important;
+  margin: 0 4px;
+}
+
+.sheet-swatches span.mixed {
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
